@@ -62,7 +62,7 @@ class GoogleWalletPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Plugi
     when (call.method) {
       METHOD_IS_AVAILABLE -> checkIsAvailable()
       METHOD_SAVE_PASSES ->
-          walletClient.savePasses(call.argument<String>("passJwt")!!, activity!!, REQUEST_CODE)
+          walletClient.savePasses(call.argument<String>("passJson")!!, activity!!, REQUEST_CODE)
       METHOD_SAVE_PASSES_JWT ->
           walletClient.savePassesJwt(call.argument<String>("passJwt")!!, activity!!, REQUEST_CODE)
       else -> result.notImplemented()
