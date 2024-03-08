@@ -57,8 +57,9 @@ The plugin also provides a Google Wallet button widget:
 ```dart
 GoogleWalletButton(
   style: GoogleWalletButtonStyle.condensed, // or GoogleWalletButtonStyle.primary (default)
-  height: 90,
-  onPressed: ... // callback function
+  height: 90, // button height
+  locale: Locale("language_code"), // explicitly set the locale if required
+  onPressed: someFunc, // callback function
 )
 ```
 

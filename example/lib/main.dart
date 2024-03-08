@@ -116,6 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
               style: GoogleWalletButtonStyle.condensed,
               height: 90,
               onPressed: _savePass,
+              // optionally set the locale explicitly:
+              // locale: Locale("en_US"),
             ),
             Text(_text),
           ],
