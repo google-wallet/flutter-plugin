@@ -18,7 +18,6 @@ group 'io.flutter.plugins.google_wallet'
 version '0.1.0'
 
 buildscript {
-    ext.kotlin_version = '1.9.22'
     repositories {
         google()
         mavenCentral()
@@ -26,7 +25,6 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -38,7 +36,6 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
     if (project.android.hasProperty("namespace")) {
