@@ -59,6 +59,7 @@ class GoogleWalletButton extends StatelessWidget {
   final double height;
   final VoidCallback? onPressed;
   final Locale? locale;
+  final EdgeInsets padding;
 
   const GoogleWalletButton({
     Key? key,
@@ -66,6 +67,7 @@ class GoogleWalletButton extends StatelessWidget {
     this.height = _minHeight,
     this.onPressed,
     this.locale,
+    this.padding = EdgeInsets.all(8),
   }) : super(key: key);
 
   String _assetPath(context) {
@@ -81,7 +83,7 @@ class GoogleWalletButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      padding: EdgeInsets.all(8),
+      padding: padding,
       onPressed: onPressed,
       child: SvgPicture.asset(
         _assetPath(context),
