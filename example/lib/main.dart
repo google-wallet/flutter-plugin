@@ -50,7 +50,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final googleWallet = GoogleWallet();
+
+  /// Example JWT for a Generic Pass.
+  /// A valid JWT for Google Wallet must include:
+  /// - iss: Your service account email
+  /// - aud: "google"
+  /// - typ: "savetowallet"
+  /// - payload: The pass objects (genericObjects, loyaltyObjects, etc.)
   final String jwt = 'eyJ0eXAiOiAiSldUIiwgImFsZyI6ICJSUzI1NiIsICJraWQiOiAiMjVmNjgzZDEwNzRhOTZkZmEwMGRiNDEwMjkwMzIwNTAyNzhiOTMwYiJ9.eyJpc3MiOiAiZGV2bW9kZXRlc3RAbXVzaWMtMjA1MjIyLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwgImF1ZCI6ICJnb29nbGUiLCAib3JpZ2lucyI6IFsid3d3LmV4YW1wbGUuY29tIl0sICJ0eXAiOiAic2F2ZXRvd2FsbGV0IiwgInBheWxvYWQiOiB7ImdlbmVyaWNPYmplY3RzIjogW3siaWQiOiAiMzM4ODAwMDAwMDAyMjE4NDQwMy50ZXN0MTIzNTY2NzNzcyJ9XX19.06qERcEP9l9dGQwbqueXWFF_UI50TX21x0PdmTyj--di2aNTFLsWB_yGOdS-nPT0X6_mn0nVmcrqnXkT0tcb7kye9jxwD-lVwjHYwn4R3Y7l7dWcQNcjeGPopeOoJmWiQF6uZoRmpmfr0q0kSS23QAPqbOiPpX4z_InARsG1p8XN1OQkCb9bx-YWu1bT-E5Be1UE5Si4NUOEZfyl4pis_HE2aKxtC7Rg-7VGNuSyyatJHZZ3bm_uU9QCG99rpRTHST4ggLW_npiPCBh6r7L3bR3PsKYejyn1zD6NQykQ3bHB9BSSNOtCDKI_8q121jjwc4KKz4dAonKxiYQhSYbrzg';
+  
   bool? _available = false;
   String _text = 'Loading';
 
@@ -89,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
         text = "Opened Google Wallet via web";
       }
     } on PlatformException catch (e) {
+      // Note: Error code 8 usually indicates an invalid JWT payload (e.g. wrong audience or signature)
       text = "Error: '${e.message}'.";
     }
     setState(() {
@@ -117,9 +126,15 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 90,
               onPressed: _savePass,
               // optionally set the locale explicitly:
-              // locale: Locale("en_US"),
+              // locale: Locale("en_USStream"),
             ),
-            Text(_text),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                _text,
+                textAlign: TextAlign.center,
+              ),
+            ),
           ],
         ),
       ),
