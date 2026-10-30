@@ -18,7 +18,7 @@ group 'io.flutter.plugins.google_wallet'
 version '0.1.0'
 
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.9.22'
     repositories {
         google()
         mavenCentral()
@@ -45,7 +45,7 @@ android {
         namespace 'io.flutter.plugins.google_wallet'
     }
 
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -63,6 +63,7 @@ android {
 
     defaultConfig {
         minSdkVersion 19
+        targetSdkVersion 34
     }
 
     dependencies {
