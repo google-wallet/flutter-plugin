@@ -53,7 +53,7 @@ enum GoogleWalletButtonStyle {
 class GoogleWalletButton extends StatelessWidget {
   static const double _minHeight = 48;
   static const _defaultLocaleName = 'en_US';
-  static const _supportedLocaleNames = ['ar', 'az', 'bg', 'br', 'bs', 'by', 'ca', 'cz', 'de', 'dk', 'en_AU', 'en_CA', 'en_GB', 'en_IN', 'en_SG', 'en_US', 'en_ZA', 'es_419', 'es_ES', 'es_US', 'et', 'fl', 'fp', 'fr_CA', 'fr_FR', 'gr', 'he', 'hr', 'hu', 'hy', 'id', 'is', 'it', 'jp', 'ka', 'kk', 'ky', 'lt', 'lv', 'mk', 'my', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'se', 'sk', 'sl', 'sq', 'sr', 'th', 'tr', 'uk', 'uz', 'vi', 'zh_HK', 'zh_TW'];
+  static const _supportedLocaleNames = ['ar', 'az', 'bg', 'br', 'bs', 'by', 'ca', 'cz', 'de', 'dk', 'en_AU', 'en_CA', 'en_GB', 'en_IN', 'en_SG', 'en_US', 'en_ZA', 'es_419', 'es_ES', 'es_US', 'et', 'fl', 'fp', 'fr_CA', 'fr_FR', 'gr', 'he', 'hr', 'hu', 'hy', 'id', 'is', 'it', 'ja', 'ka', 'kk', 'ky', 'lt', 'lv', 'mk', 'my', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'se', 'sk', 'sl', 'sq', 'sr', 'th', 'tr', 'uk', 'uz', 'vi', 'zh_HK', 'zh_TW'];
 
   final GoogleWalletButtonStyle style;
   final double height;
@@ -76,6 +76,8 @@ class GoogleWalletButton extends StatelessWidget {
       localeName = locale.toString();
     } else if (_supportedLocaleNames.contains(Platform.localeName)) {
       localeName = Platform.localeName;
+    } else if (_supportedLocaleNames.contains(Platform.localeName.split('_')[0])) {
+      localeName = Platform.localeName.split('_')[0];
     }
     return 'assets/${localeName}_wallet_button_${style.name}.svg';
   }
