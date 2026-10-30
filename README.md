@@ -21,7 +21,9 @@ and save a pass to the user's Google Wallet:
 import 'package:google_wallet/google_wallet.dart';
 
 final googleWallet = GoogleWallet();
-final String jwt = '...'; // your own pass JWT
+// Note: The JWT must be a valid Google Wallet Pass JWT.
+// It must contain 'aud': 'google', 'typ': 'savetowallet', and the pass payload.
+final String jwt = '...'; 
 
 example() async {
   bool? available;
@@ -47,6 +49,7 @@ example() async {
       text = "Opened Google Wallet via web";
     }
   } on PlatformException catch (e) {
+    // If you see 'Error 8 / Unknown error', verify your JWT payload and signature.
     text = "Error: '${e.message}'.";
   }
 }
